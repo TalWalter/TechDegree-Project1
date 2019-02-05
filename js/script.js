@@ -26,8 +26,8 @@ let quotes = [
     source: " –Ralph Waldo Emerson"
   },
   {
-    quote: "Start where you are. Use what you have.",
-    source: "Do what you can. –Arthur Ashe"
+    quote: "Start where you are. Use what you have. Do what you can.",
+    source: " –Arthur Ashe"
   },
   {
     quote: "When one door of happiness closes, another opens, but often we look so long at the closed door that we do not see the one that has been opened for us.",
@@ -67,13 +67,12 @@ let quotes = [
      `quotes` array.
 ***/
 
-function getRandomQuote(array) {
-  let randomNumber = Math.floor(Math.random() * 7 ) + 1;
-  for ( let i = 0; i < array.length; i++) {
-    return array[randomNumber].quote + array[randomNumber].source + array[randomNumber].citation + array[randomNumber].year;
-  }
-}
 
+
+function getRandomQuote(array) {
+  let randomNumber = Math.floor(Math.random() * array.length) + 1;
+  return array[randomNumber];
+}
 
 /***
   Create the `printQuote` function to: 
@@ -91,14 +90,13 @@ function printQuote () {
   result += '<p class="quote">' + random.quote + '</p>';
   result += '<p class="source">' + random.source + '</p>';
   if ( random.citation === true ) {
-    result += '<span class="citation">' + random.citation + '</span>';
+    result += '<p><span class="citation">' + random.citation + '</span></p>';
   } else if (random.year === true) {
-    result += '<span class="year">' + random.year + '</span>';
+    result += '<p><span class="year">' + random.year + '</span></p>';
   }
-
   document.getElementById('quote-box').innerHTML = result;
-}
 
+}
 
 
 /***
