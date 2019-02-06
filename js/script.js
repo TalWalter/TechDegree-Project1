@@ -3,18 +3,11 @@ Treehouse Techdegree:
 FSJS project 1 - A Random Quote Generator
 ******************************************/
 
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
-
-
-/*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-
-  Recommended: 
-    - Add at least one `year` and/or `citation` property to at least one 
-      quote object.
-***/
+/*
+Create an array of atleast 5 objects, 
+I did 8 only with the quotes and source properties showing on the browser.
+I couldnt figure out how to get the citation and year to show. 
+*/
 
 let quotes = [
   {
@@ -60,53 +53,42 @@ let quotes = [
 
 
 
-/***
+/*
   Create the `getRandomQuote` function to:
-   - generate a random number 
-   - use the random number to `return` a random quote object from the 
-     `quotes` array.
-***/
-
-
+   
+*/
 
 function getRandomQuote(array) {
   let randomNumber = Math.floor(Math.random() * array.length);
   return array[randomNumber];
 }
 
-/***
-  Create the `printQuote` function to: 
-   - call the `getRandomQuote` function and assign it to a variable.
-   - use the properties of the quote object stored in the variable to 
-     create your HTML string.
-   - use conditionals to make sure the optional properties exist before 
-     they are added to the HTML string.
-   - set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
+/*
+  Create the `printQuote` function: 
+  - call the getRandomQuote funtion in a variable with 'quotes' as the argument
+  - initiate the string that will display on the browser
+  - create a conditional statement to check for citation or year properties. 
+*/
 
 function printQuote () {
   let random = getRandomQuote(quotes);
   let result = '';
   result += '<p class="quote">' + random.quote + '</p>';
   result += '<p class="source">' + random.source + '</p>';
-  if ( random.citation === true && random.year === true ) {
-    result += '<p><span class="citation">' + random.citation + '</span>' + '<span class="year">' + random.year + '</span></p>';
-  } else {
-    result += '';
-  }
+  if (random.citation === true && random.year === true) {
+    result += '<p class="source">' + '<span class="citation">' + random.citation + '</span>' + '</p>';
+    result += '<p class="source">' + '<span class="year">' + random.year + '</span>' + '</p>';
+} 
+  
   document.getElementById('quote-box').innerHTML = result;
 
 }
 
 
 /***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
+  I was told to leave whats below alone
 ***/
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
